@@ -3,6 +3,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const connectDB = require('./config/db');
+const userRoutes = require('./routes/userRoutes');
+
+
+connectDB();
+
+
 const app = express();
 
 // Apply body-parser for other routes
