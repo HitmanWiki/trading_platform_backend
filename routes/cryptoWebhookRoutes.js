@@ -4,6 +4,7 @@ const { Webhook } = require('coinbase-commerce-node');
 const User = require('../models/user');
 
 router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+    console.log('Webhook endpoint hit');
     const sigHeader = req.headers['x-cc-webhook-signature'];
 
     try {
@@ -14,6 +15,7 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
         );
 
         if (event.type === 'charge:confirmed') {
+            console.log('Charge confirmed event received');
             const userId = event.data.metadata.userId;
 
             // Generate API Key
@@ -29,5 +31,3 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
         res.status(400).json({ error: 'Webhook handler failed' });
     }
 });
-
-module.exports = router;
