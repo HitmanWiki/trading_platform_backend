@@ -18,9 +18,10 @@ mongoose
 app.use('/api/users', require('./routes/userRoutes'));
 app.use(
     '/api/crypto-webhooks',
-    express.raw({ type: 'application/json' }), // Use express.raw for the webhook route
-    require('./routes/cryptoWebhookRoutes')
+    express.raw({ type: 'application/json' }), // Use raw for webhooks
+    require('./routes/cryptoWebhookRoutes')   // Register the route
 );
+
 app.use('/api/crypto-payments', require('./routes/cryptoPaymentRoutes'));
 
 // Start server
