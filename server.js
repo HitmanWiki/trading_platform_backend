@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const cors = require('cors'); // Import CORS middleware
 
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
