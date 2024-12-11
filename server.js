@@ -13,6 +13,14 @@ connectDB();
 
 const app = express();
 
+
+app.use(cors({
+    origin: ['https://trading-platform-frontend-nu.vercel.app'], // Allow your frontend's URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true, // Include credentials (optional)
+}));
+
+
 // Apply body-parser for other routes
 app.use(bodyParser.json());
 
